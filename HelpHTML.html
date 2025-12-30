@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html><head>
+<title>Help</title>
+<meta charset="UTF-8">
+</head>
+
+<body style="background-color:lightyellow; font-family: Veranda; font-size: 14pt; line-height: 1;">
+
+<div><span style="font-size: 14pt;"><strong><span style="color: #215e99;">Connecting \ Login:</span></strong></span></div>
+<div><span style="font-size: 11pt; color: black;">Use login name and password, otherwise...</span></div>
+<div><span style="font-size: 11pt; color: black;">Use LDAP username like Some.User@Domain</span></div>
+<div><span style="font-size: 11pt; color: black;">Leave the password blank if using LDAP username.</span></div>
+<div>&nbsp;</div>
+
+<div><span style="font-size: 14pt;"><strong><span style="color: #215e99;">General Help:</span></strong></span></div>
+<div><span style="font-size: 11pt; color: black;"><a href="https://cybertec-postgresql.github.io/pg_timetable/latest/components/">https://cybertec-postgresql.github.io/pg_timetable/latest/components/</a></span></div>
+<div>&nbsp;</div>
+<div><strong><span style="font-size: 11.0pt; color: #215e99;">Run At:</span></strong></div>
+<div><span style="font-size: 11pt; color: black;">For help with crontab <a href="https://crontab.guru/">https://crontab.guru</a></span></div>
+<div>&nbsp;</div>
+<div><span style="font-size: 11pt; color: black;">Example: Daily at 04:45:</span></div>
+<div><span style="font-size: 11pt; color: #a02b93; font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;">45 4 * * *</span></div>
+<div>&nbsp;</div>
+<div><span style="font-size: 11pt; color: black;">Example: Every 5 minutes:</span></div>
+<div><span style="font-size: 11pt; color: #a02b93;"><span style="font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;">*/5 * *</span> <em> </em></span></div>
+<div><span style="font-size: 11pt; color: black;">or</span></div>
+<div><span style="font-size: 11pt; color: #a02b93; font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;">@every 5 minutes</span></div>
+<div>&nbsp;</div>
+<div><span style="font-size: 11pt; color: black;">Example: After 1 hour:</span></div>
+<div><span style="font-size: 11pt; color: #843fa1; font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;">@after 1 hour</span></div>
+<div>&nbsp;</div>
+<div><span style="font-size: 11pt; color: black;">Example: Execute after pg_timetable restarts:</span></div>
+<div><span style="font-size: 11pt; color: #843fa1; font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;">@reboot</span></div>
+<div>&nbsp;</div>
+
+<div><span style="font-size: 14pt;"><strong><span style="color: #215e99;">Task Parameter Help:</span></strong></span></div>
+<div><span style="font-size: 11pt; color: black;"><a href="https://cybertec-postgresql.github.io/pg_timetable/latest/components/#parameter-value-format">https://cybertec-postgresql.github.io/pg_timetable/latest/components/#parameter-value-format</a></span><span style="font-size: 11pt; color: black;">&nbsp;</span></div>
+<div>&nbsp;</div>
+<div><strong><span style="font-size: 11pt; color: black;">BUILTIN:</span></strong></div>
+<div><span style="font-size: 11pt; color: black;">When using some BUILTIN commands then some parameters don’t need to be in a JSON format.</span></div>
+<div>&nbsp;</div>
+<div><span style="font-size: 11pt; color: black;">Example:</span></div>
+<div><span style="font-size: 11pt; color: black;">Command: </span><span style="font-size: 11pt; color: #a02b93; font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;">Sleep</span></div>
+<div><span style="font-size: 11pt; color: black;">Parameter: </span></div>
+<div><span style="font-size: 11pt; color: #a02b93; font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;">20</span></div>
+<div>&nbsp;</div>
+<div><strong><span style="font-size: 11pt; color: black;">SQL: </span></strong></div>
+<div><span style="font-size: 11pt; color: black;">With the SQL command you pass parameters using $1 $2 etc..</span></div>
+<div><span style="font-size: 11pt; color: black;">SQL: </span><span style="font-size: 11pt; color: #a02b93; font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;">SELECT * FROM TableXYZ WHERE Col1 = $1</span></div>
+<div><span style="font-size: 11pt; color: black;">Parameter:</span></div>
+<div><span style="font-size: 11pt; color: #a02b93; font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;">["Value1"]</span></div>
+<div>&nbsp;</div>
+<div><strong><span style="font-size: 11pt; color: black;">PROGRAM:</span></strong></div>
+<div><span style="font-size: 11pt; color: black;">When running programs that have parameters, put them in JSON format.</span></div>
+<div>&nbsp;</div>
+<div><span style="font-size: 11pt; color: black;">Example:</span></div>
+<div><span style="font-size: 11pt; color: black;">Command: </span><span style="font-size: 11pt; color: #a02b93; font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;">D:\PostgreSQL\Backup\Test.cmd</span></div>
+<div><span style="font-size: 11pt; color: black;">Parameters:</span></div>
+<div><span style="font-size: 11pt; color: #a02b93; font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;">[</span></div>
+<div><span style="font-size: 11pt; color: #a02b93; font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;">&nbsp; &nbsp;&nbsp;&nbsp; "aaa",</span></div>
+<div><span style="font-size: 11pt; color: #a02b93; font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;">&nbsp; &nbsp;&nbsp;&nbsp; "bbb",</span></div>
+<div><span style="font-size: 11pt; color: #a02b93; font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;">&nbsp; &nbsp;&nbsp;&nbsp; "333"</span></div>
+<div><span style="font-size: 11pt; color: #a02b93; font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;">]</span></div>
+<div>&nbsp;</div>
+<div><span style="font-size: 11pt; color: black;">To run a PowerShell script, just put powershell in the Command and the script name and parameters in Parameters.</span></div>
+<div><span style="font-size: 11pt; color: black;">You need to cater for special characters like slash \</span></div>
+<div>&nbsp;</div>
+<div><span style="font-size: 11pt; color: black;">Example 1: Runs the PowerShell script Test.ps1</span></div>
+<div><span style="font-size: 11pt; color: black;">Command: </span><span style="font-size: 11pt; color: #a02b93;">powershell</span></div>
+<div><span style="font-size: 11pt; color: black;">Parameters:</span></div>
+<div><span style="font-size: 11pt; color: #a02b93; font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;">["D:\\PostgreSQL\\Backup\\Test.ps1"]</span></div>
+<div>&nbsp;</div>
+<div><span style="font-size: 11pt; color: black;">Example 2: Runs the PowerShell script Test.ps1 with the parameter “start”</span></div>
+<div><span style="font-size: 11pt; color: black;">Command: </span><span style="font-size: 11pt; color: #a02b93;">powershell</span></div>
+<div><span style="font-size: 11pt; color: black;">Parameters:</span></div>
+<div><span style="font-size: 11pt; color: #a02b93; font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;">["D:\\PostgreSQL\\Backup\\Test.ps1 start"]</span></div>
+<div>&nbsp;</div>
+<div><span style="font-size: 11pt; color: black;">Example 3: Runs the PowerShell script Test.ps1 with an alternative way to pass multiple parameters.</span></div>
+<div><span style="font-size: 11pt; color: black;">Command: </span><span style="font-size: 11pt; color: #a02b93;">powershell</span></div>
+<div><span style="font-size: 11pt; color: black;">Parameters:</span></div>
+<div><span style="font-size: 11pt; color: #a02b93; font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;">[</span></div>
+<div><span style="font-size: 11pt; color: #a02b93; font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;">&nbsp; &nbsp;&nbsp;&nbsp; "D:\\PostgreSQL\\Backup\\Test.ps1",</span></div>
+<div><span style="font-size: 11pt; color: #a02b93; font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;">&nbsp; &nbsp;&nbsp;&nbsp; "param1",</span></div>
+<div><span style="font-size: 11pt; color: #a02b93; font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;">&nbsp; &nbsp;&nbsp;&nbsp; "value2"</span></div>
+<div><span style="font-size: 11pt; color: #a02b93; font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;">]</span></div>
+
+</body></html>
