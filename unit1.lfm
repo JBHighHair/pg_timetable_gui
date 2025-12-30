@@ -1,0 +1,599 @@
+object Form1: TForm1
+  Left = 299
+  Height = 626
+  Hint = 'object WorkerLabel: TLabel'
+  Top = 250
+  Width = 1251
+  Caption = 'pg_timetable_gui'
+  ClientHeight = 626
+  ClientWidth = 1251
+  Menu = MainMenu
+  Position = poDefaultSizeOnly
+  LCLVersion = '4.4.0.0'
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  object StatusBar1: TStatusBar
+    Left = 0
+    Height = 23
+    Top = 603
+    Width = 1251
+    AutoHint = True
+    Panels = <>
+  end
+  object PageControl1: TPageControl
+    Left = 0
+    Height = 603
+    Top = 0
+    Width = 1251
+    ActivePage = TabSheet1
+    Align = alClient
+    Images = ImageList1
+    TabIndex = 0
+    TabOrder = 3
+    object TabSheet1: TTabSheet
+      Caption = 'Jobs'
+      ClientHeight = 575
+      ClientWidth = 1243
+      ImageIndex = 8
+      object DBGridChains: TDBGrid
+        Left = 0
+        Height = 280
+        Top = 30
+        Width = 1243
+        Align = alTop
+        Color = clWindow
+        Columns = <>
+        DataSource = DataSourceChains
+        Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgAutoSizeColumns, dgRowHighlight, dgDblClickAutoSize, dgDisplayMemoText]
+        ReadOnly = True
+        TabOrder = 0
+        OnCellClick = DBGridChainsCellClick
+        OnDblClick = EditChain
+        OnKeyDown = GridKeyDown
+      end
+      object DBGridTasks: TDBGrid
+        Left = 0
+        Height = 232
+        Top = 343
+        Width = 1243
+        Align = alBottom
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        Color = clWindow
+        Columns = <>
+        DataSource = DataSourceTasks
+        Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgAutoSizeColumns, dgRowHighlight, dgDblClickAutoSize, dgDisplayMemoText]
+        ReadOnly = True
+        TabOrder = 1
+        OnDblClick = EditTask
+      end
+      object PanelTasks: TPanel
+        Left = 0
+        Height = 30
+        Top = 310
+        Width = 1243
+        Align = alTop
+        ClientHeight = 30
+        ClientWidth = 1243
+        Color = clSkyBlue
+        ParentBackground = False
+        ParentColor = False
+        TabOrder = 2
+        object MoveTaskDownBitBtn: TBitBtn
+          Left = 464
+          Height = 25
+          Hint = 'Move selected task order down.'
+          Top = 3
+          Width = 83
+          Caption = 'Move Down'
+          Enabled = False
+          Images = ImageList1
+          ImageIndex = 3
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+          OnClick = MoveTaskDown
+        end
+        object MoveTaskUpBitBtn: TBitBtn
+          Left = 368
+          Height = 25
+          Hint = 'Move selected task order up.'
+          Top = 3
+          Width = 83
+          Caption = 'Move Up'
+          Enabled = False
+          Images = ImageList1
+          ImageIndex = 4
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 1
+          OnClick = MoveTaskUp
+        end
+        object DeleteTaskBitBtn: TBitBtn
+          Left = 272
+          Height = 25
+          Hint = 'Delete the selected task.'
+          Top = 3
+          Width = 83
+          Caption = 'Del Task'
+          Enabled = False
+          Images = ImageList1
+          ImageIndex = 1
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 2
+          OnClick = DeleteTask
+        end
+        object AddTaskBitBtn: TBitBtn
+          Left = 176
+          Height = 25
+          Hint = 'Add a new task.'
+          Top = 3
+          Width = 83
+          Caption = 'Add Task'
+          Enabled = False
+          Images = ImageList1
+          ImageIndex = 0
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 3
+          OnClick = AddTask
+        end
+        object EditTaskBitBtn: TBitBtn
+          Left = 80
+          Height = 25
+          Hint = 'Edit selected task.'
+          Top = 3
+          Width = 83
+          Caption = 'Edit Task'
+          Enabled = False
+          Images = ImageList1
+          ImageIndex = 2
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 4
+          OnClick = EditTask
+        end
+        object LabelTasks: TLabel
+          Left = 0
+          Height = 25
+          Top = 0
+          Width = 73
+          Anchors = [akTop, akLeft, akRight]
+          AutoSize = False
+          Caption = ' Tasks:'
+          Color = clSkyBlue
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clBlue
+          Font.Height = -19
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+          Transparent = False
+        end
+      end
+      object PanelChains: TPanel
+        Left = 0
+        Height = 30
+        Top = 0
+        Width = 1243
+        Align = alTop
+        ClientHeight = 30
+        ClientWidth = 1243
+        Color = clSkyBlue
+        ParentBackground = False
+        ParentColor = False
+        TabOrder = 3
+        object LabelChains: TLabel
+          Left = -1
+          Height = 23
+          Top = 1
+          Width = 74
+          AutoSize = False
+          Caption = ' Chains:'
+          Color = clSkyBlue
+          Font.CharSet = ANSI_CHARSET
+          Font.Color = clBlue
+          Font.Height = -19
+          Font.Pitch = fpVariable
+          Font.Quality = fqDraft
+          Font.Style = [fsBold]
+          ParentColor = False
+          ParentFont = False
+          Transparent = False
+        end
+        object RefreshGridsBitBtn: TBitBtn
+          Left = 656
+          Height = 25
+          Hint = 'Refresh all grids (F5)'
+          Top = 3
+          Width = 83
+          Caption = 'Refresh'
+          Enabled = False
+          Images = ImageList1
+          ImageIndex = 5
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+          OnClick = RefreshGrids
+        end
+        object StopChainBitBtn: TBitBtn
+          Left = 464
+          Height = 25
+          Hint = 'Send notification to the worker to stop the selected chain.'
+          Top = 3
+          Width = 83
+          Caption = 'Stop Chain'
+          Enabled = False
+          Images = ImageList1
+          ImageIndex = 7
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 1
+          Visible = False
+          OnClick = StopChain
+        end
+        object RunChainBitBtn: TBitBtn
+          Left = 368
+          Height = 25
+          Hint = 'Send notification to the worker to start the selected chain.'
+          Top = 3
+          Width = 83
+          Caption = 'Run Now'
+          Enabled = False
+          Images = ImageList1
+          ImageIndex = 6
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 2
+          OnClick = RunChain
+        end
+        object DeleteChainBitBtn: TBitBtn
+          Left = 272
+          Height = 25
+          Hint = 'Delete the selected chain.'
+          Top = 3
+          Width = 83
+          Caption = 'Del Chain'
+          Enabled = False
+          Images = ImageList1
+          ImageIndex = 1
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 3
+          OnClick = DeleteChain
+        end
+        object AddChainBitBtn: TBitBtn
+          Left = 176
+          Height = 25
+          Hint = 'Add a new chain.'
+          Top = 3
+          Width = 83
+          Caption = 'Add Chain'
+          Enabled = False
+          Images = ImageList1
+          ImageIndex = 0
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 4
+          OnClick = AddChain
+        end
+        object EditChainBitBtn: TBitBtn
+          Left = 80
+          Height = 25
+          Hint = 'Edit selected chain.'
+          Top = 3
+          Width = 83
+          Caption = 'Edit Chain'
+          Enabled = False
+          Images = ImageList1
+          ImageIndex = 2
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 5
+          OnClick = EditChain
+        end
+      end
+    end
+    object TabSheet2: TTabSheet
+      Caption = 'Execution Log'
+      ClientHeight = 575
+      ClientWidth = 1243
+      ImageIndex = 9
+      OnShow = ShowLog
+      object DBGridLog: TDBGrid
+        Left = 0
+        Height = 536
+        Top = 40
+        Width = 1247
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        Color = clWindow
+        Columns = <>
+        DataSource = DataSourceLog
+        Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgAutoSizeColumns, dgRowHighlight, dgDblClickAutoSize, dgDisplayMemoText]
+        ReadOnly = True
+        TabOrder = 0
+      end
+      object RefreshLogBitBtn: TBitBtn
+        Left = 8
+        Height = 29
+        Hint = 'Refresh the execution log.'
+        Top = 6
+        Width = 75
+        Caption = 'Refresh'
+        Enabled = False
+        Images = ImageList1
+        ImageIndex = 5
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 1
+        OnClick = ShowLog
+      end
+      object SearchEdit: TEdit
+        Left = 168
+        Height = 23
+        Hint = ' '
+        Top = 12
+        Width = 98
+        Enabled = False
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 2
+        OnKeyDown = SearchEditKeyDown
+      end
+      object SearchBitBtn: TBitBtn
+        Left = 272
+        Height = 29
+        Hint = 'Search the execution log.'
+        Top = 6
+        Width = 75
+        Caption = 'Search'
+        Enabled = False
+        Images = ImageList1
+        ImageIndex = 11
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 3
+        OnClick = SearchExecutionLog
+      end
+    end
+    object TabSheet3: TTabSheet
+      Caption = 'Help'
+      ClientHeight = 575
+      ClientWidth = 1243
+      ImageIndex = 10
+      object HelpIpHtmlPanel: TIpHtmlPanel
+        Left = 0
+        Height = 575
+        Top = 0
+        Width = 1243
+        Align = alClient
+        FixedTypeface = 'Courier New'
+        DefaultTypeFace = 'default'
+        DefaultFontSize = 12
+        FlagErrors = False
+        PrintSettings.MarginLeft = 0.5
+        PrintSettings.MarginTop = 0.5
+        PrintSettings.MarginRight = 0.5
+        PrintSettings.MarginBottom = 0.5
+        PrintSettings.Preview.Left = 480
+        PrintSettings.Preview.Top = 270
+        PrintSettings.Preview.Width = 1440
+        PrintSettings.Preview.Height = 810
+        TabOrder = 0
+        OnHotClick = HelpIpHtmlPanelHotClick
+      end
+    end
+  end
+  object ConnectBitBtn: TBitBtn
+    Left = 1022
+    Height = 24
+    Hint = 'Connect to PostgreSQL server.'
+    Top = 0
+    Width = 83
+    Anchors = [akTop]
+    Caption = 'Connect'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlue
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    Images = ImageList1
+    ImageIndex = 14
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
+    OnClick = Connect
+  end
+  object ExitBitBtn: TBitBtn
+    Left = 1144
+    Height = 24
+    Hint = 'Exit program.'
+    Top = 0
+    Width = 83
+    Anchors = [akTop]
+    Caption = 'Exit'
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clBlue
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    Images = ImageList1
+    ImageIndex = 13
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 2
+    OnClick = ExitClick
+  end
+  object WorkerLabel: TLabel
+    Left = 304
+    Height = 15
+    Top = 5
+    Width = 64
+    Caption = 'Worker: ???'
+    Font.CharSet = ANSI_CHARSET
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object MainMenu: TMainMenu
+    Left = 600
+    Top = 104
+    object MenuItemConnect: TMenuItem
+      Caption = 'Connect'
+      OnClick = Connect
+    end
+    object MenuItemAbout: TMenuItem
+      Caption = 'About'
+      OnClick = About
+    end
+    object MenuItemExit: TMenuItem
+      Caption = 'Exit'
+      OnClick = ExitClick
+    end
+  end
+  object PQConnection1: TPQConnection
+    Connected = False
+    LoginPrompt = False
+    DatabaseName = 'postgres'
+    KeepConnection = False
+    Transaction = SQLTransaction1
+    UserName = 'postgres'
+    Left = 728
+    Top = 104
+  end
+  object SQLQueryChains: TSQLQuery
+    PacketRecords = 30
+    FieldDefs = <>
+    AfterScroll = ShowTasks
+    Database = PQConnection1
+    Transaction = SQLTransaction1
+    Params = <>
+    ParamCheck = False
+    Macros = <>
+    Left = 104
+    Top = 104
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = False
+    Database = PQConnection1
+    Options = [stoUseImplicit]
+    Left = 728
+    Top = 176
+  end
+  object DataSourceChains: TDataSource
+    DataSet = SQLQueryChains
+    Left = 216
+    Top = 104
+  end
+  object SQLQueryTasks: TSQLQuery
+    PacketRecords = 30
+    FieldDefs = <>
+    Database = PQConnection1
+    Transaction = SQLTransaction1
+    Params = <>
+    ParamCheck = False
+    Macros = <>
+    Left = 104
+    Top = 176
+  end
+  object DataSourceTasks: TDataSource
+    DataSet = SQLQueryTasks
+    Left = 216
+    Top = 176
+  end
+  object SQLQueryLog: TSQLQuery
+    PacketRecords = 30
+    FieldDefs = <>
+    AfterScroll = ShowTasks
+    Database = PQConnection1
+    Transaction = SQLTransaction1
+    Params = <>
+    ParamCheck = False
+    Macros = <>
+    Left = 104
+    Top = 248
+  end
+  object DataSourceLog: TDataSource
+    DataSet = SQLQueryLog
+    Left = 216
+    Top = 248
+  end
+  object SQLQueryAdhoc: TSQLQuery
+    PacketRecords = 30
+    FieldDefs = <>
+    Database = PQConnection1
+    Transaction = SQLTransaction1
+    Params = <>
+    ParamCheck = False
+    Macros = <>
+    Left = 368
+    Top = 104
+  end
+  object ImageList1: TImageList
+    Left = 600
+    Top = 176
+    Bitmap = {
+      4C7A0F0000001000000010000000D00600000000000078DAED5B6B6C5445141E
+      A8A5B0620D906AC54A5B292255A3FCB2A509D6545383A255598D8A58ADF1D144
+      926AC4C634C4677FD458456C14515114B4DB4868150DC628C6E8026A119587C6
+      47083E016B118C3104D773D26F92C964E6DEB9B32D74CB9EE4FBD17BF79B997B
+      E69C398F7B2BC4889626C0571240A6F09B140E6337A05E6B1A427EA6EB6FB0ED
+      E7589473092F6B36C3584138C7811F27A40CFC14EEB9F27509E2CBF1A340B5AB
+      0A427B046E3B38A675BB201EF0DC597E66F2D96F5E32D8BDAF1F0D17C921D410
+      6E22C43CB88D845F09FB09CF471883B99783CB7ABB97D0475818715EF6D52242
+      07610F614EC47999DB0C6E33EEFBCC3BDF81EB3BAF48635E29FCDB351EF3AAE7
+      733BF638CABC2A3F053B698EC81D0C4944C460F347A25418E2E448CEDF5DF836
+      BBCE830F9707F0CB91CF9ACED042FCF63B42AD817F31E12B4237A1D8B206BEDE
+      8B31CA157E39B89F0570D531BA3106E35B87796DEBE0F3E03FC7796DEBE8F6E0
+      AA63148BACF84A21E0CB7D0528F4E06E5062CA860863C879A5FD6E035CD621E7
+      D5FDA7086304AD439DD7E4BF95188373CC02CBF9D114727E14218F8A1DC5F32F
+      93F8E9C6AF4C94518419844584E790CF2D865D8D0EE1B27DBD4EF88BF005611D
+      E14DC266C2DF841EC2E984BB019DCB7BB595504F98063B1D4728416CFC01E36D
+      D2F695D7D545D8419864595B3EFCEA80A1FE9F89BCB33EE0D96AE17F070DFC87
+      099F104E0DD14D5C41A5728F7D7A2D21F708ECEF58E870B972AD525B5B5100BF
+      94F029E13E43FFE52074541BC0BF83D04F986EE0B3DD5C84BD32C9C984EFA1AF
+      511A9F6DEC6D9C9F3CC7143CEBF198EB56AC6DA5E10C96F658467807B6BA097A
+      E231BFC4DA563AC480D1A8EF1F80EF3C8BB1CF38C6E27E3AF55B1B7CAA208D73
+      3FA5D862CC939F422DDB86F8EAC34F296B893BEAC5D6CFE4B5B404F847187F3F
+      F43AC183BF13E7635EC4F5EF431CC9F7D01FBFBBA8238CF7B09FB63473CF3C91
+      954C943E61EFDBF645E843D990E50F2D3FDDFDCBCAE0099F81D5A82B1B9127BB
+      CA6CC2BBD8B35ED4039C7B2F456E1624F9C8E5B96FC4FDFAA9A8071610761156
+      05707370F66F44AEAACB155847B5855F803AFD51E498355A1C29453FAA51E395
+      802BEFDF86BF396EAE577210CEAD9388E3AA9ED720671C8F1C7409EE71CEC07D
+      7DF9DEA31A71718E569BF429D71A902BC87CA395F03E6A237EAE0FB5F8D6883D
+      9AAAAC673D7269DE8BEBB0175C174EC65EA8D280FD9DA6D53BB5D0E183D0A92D
+      9F9B893DB9D6706F0AD6BB242477E2DEC98F18A314EB9C8DBA609B432E59827C
+      FD00F6EF63D8DA4721F58C2ED25F5AB01F999247B48AE0F71561F9540A766DE3
+      87F5E1C2BE0F9031C0D68773E5CB7584F1650D93837C59D6C6ED22F8FB845CE4
+      ACD2472F801FD5E15ED8F70D75B0BB0EAC61026C7F17EE85F1AF26FC063D1528
+      FC9F09373BF07331069F2757C2F677833B56B87F9F5104DBCF816F09E53C4B79
+      ECDF91E02745F87BBBA485DF21DCDFFDB56650FF6F9918E8194FD77A2EB61ED7
+      6B5AFF6F1D7A7A5C7BBE4A3825809B40AF45EDFFC5D03BE118B3DDE2FFB2FFB7
+      5DE9FF55E1CC7A5CE9B515C2175768CFC2F1E74F31F08D03CB89E833C9BC6587
+      12BF1BD1BF2A0BE8FF710CBF0A3188E7FE097984408CEDD5FA9FB6FE1F3FF793
+      884967E25A0C3A7D46F9DD72F456F558D38973E31AADFFD783BD95723FFA5DFA
+      BB2EEE7DCFD27465EAFF9D85FD6D30D4F10987FE1FEFDF6AE44A93B4F92B1CFA
+      7F02BAEF84AD2DC0FEC41CFB7FAA0D76C27EB710DEF2E8FF49FF69868E33ADFF
+      7702E132C213D0333FC7F90E3CB6DDB9845F9087BD2706DEBD26D103EA825E6C
+      72296CF545CCC7716B0CE134C4D16F081F587A791331EF5301E3B30D7C8EF8AD
+      FBD98D62E03DF57921FBBA107651A6DD7B41B8F5EF0B6147B586DCF50D11FE7E
+      857DF710F200551E428E7C52089FFBD27B0DB5CF85B85E13B2BF8F219F36BD13
+      EF81EF99E2442E7C809FFD76CBF867C356646D558ADAA30AF3F623EE2E0AD0F3
+      44C4ABAD98EB5FD8C5469C8177C2161F11C1DF61B0AF5E825AB10A36286BCBC5
+      A8ADEA1DF6CB569FDE821C6BB4A78FE60CC37363AFD2B30DCA9B5A2CFD5CD377
+      B932062494BCAD5F8B3D61FCB8921BCADF1C8EC057DFDB05F5B1A27E7F3C547C
+      D7FEDC48E5C74360E3EF8BA0FB3DD9D6A0519639E8EEE9007E17CE09DBDE2545
+      F0F71C5D23F07EA572ED68F033E5BEB48F30FB495AFA04E99EBFC3B5969F9706
+      7F166A761F998C9CD4F7FBABBB08FF78F28BD1BF3AE4C11F837ED916202A7F1E
+      62C95C617E8F7E18F9BE2DAFDB8CDAE938E43ED2766F80EDEE14E6F730CCBD07
+      3A6B5578B27E66FE1FE84B98846BF8AF85F9FFA4C6A1765E8B75B94A0235F452
+      E87246445D32FF7760BE47BE9C80BE5779DA602240DF2EB23A40DF2E727D98BE
+      FF073A265746
+    }
+  end
+end
