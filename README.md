@@ -20,7 +20,7 @@ You will require Lazarus https://www.lazarus-ide.org/ to compile the binary.
 No extra packages are required.
 
 The source code has been compiled and tested for the following environments:
-- Windows 11
+- Windows 11 \ Windows Server 2019
 - Fedora Workstation 43
 
 ## Support
