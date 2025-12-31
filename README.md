@@ -31,10 +31,11 @@ The source code has been compiled and tested for the following environments:
 Working pg_timetable scheduler version 6.2.0 and above running on PostgreSQL.
 
 
-DLLs are required to run the binary especially libpq.dll
+DLLs are required to run the binary for Windows especially libpq.dll
 
 These DLLs can be found in the pgAdmin 4 installation typically under the path C:\Program Files\pgAdmin 4\runtime\
 
+- d3dcompiler_47.dll
 - libcrypto-3-x64.dll
 - libEGL.dll
 - libGLESv2.dll
@@ -45,7 +46,7 @@ These DLLs can be found in the pgAdmin 4 installation typically under the path C
 - libssl-3-x64.dll
 - libzstd.dll
 
-Copy these DLLs to the same location as the compiled pg_timetable_gui binary.
+Copy these DLLs to the same location as pg_timetable_gui.exe
 
 ## Support
 Description of chain and task properties can be found here https://cybertec-postgresql.github.io/pg_timetable
