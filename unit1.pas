@@ -81,6 +81,7 @@ type
         procedure HelpIpHtmlPanelHotClick(Sender: TObject);
         procedure MoveTaskDown(Sender: TObject);
         procedure MoveTaskUp(Sender: TObject);
+        procedure PageControl1Change(Sender: TObject);
         procedure RefreshGrids(Sender: TObject);
         procedure GridKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
         procedure RunChain(Sender: TObject);
@@ -504,6 +505,13 @@ begin
          SQLQueryTasks.Refresh;
          StatusBar1.SimpleText := 'Task ' + task_name + ' [ID ' + IntToStr(task_id) + '] moved up.';
     end;
+end;
+
+procedure TForm1.PageControl1Change(Sender: TObject);
+begin
+    {Refresh selected tab}
+    if PageControl1.TabIndex = 0 then RefreshGrids(Sender);
+    if PageControl1.TabIndex = 1 then ShowLog(Sender);
 end;
 
 procedure TForm1.MoveTaskDown(Sender: TObject);

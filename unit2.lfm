@@ -1,28 +1,29 @@
 object Form2: TForm2
   Left = 299
-  Height = 233
+  Height = 236
   Top = 250
-  Width = 332
+  Width = 342
   BorderStyle = bsDialog
   Caption = 'Connect...'
-  ClientHeight = 233
-  ClientWidth = 332
+  ClientHeight = 236
+  ClientWidth = 342
   FormStyle = fsStayOnTop
   Position = poMainFormCenter
-  LCLVersion = '4.4.0.0'
+  LCLVersion = '4.6.0.0'
   OnShow = FormShow
   object Bevel1: TBevel
     Left = 0
-    Height = 161
+    Height = 159
     Top = 25
-    Width = 332
+    Width = 342
     Align = alTop
+    Anchors = [akTop, akLeft, akRight, akBottom]
     Shape = bsFrame
   end
   object laUser: TLabel
     Left = 8
     Height = 15
-    Top = 64
+    Top = 120
     Width = 40
     Caption = '&User ID:'
     FocusControl = edUserID
@@ -32,7 +33,7 @@ object Form2: TForm2
   object laPass: TLabel
     Left = 8
     Height = 15
-    Top = 91
+    Top = 147
     Width = 53
     Caption = 'Pass&word:'
     FocusControl = edPasswd
@@ -42,7 +43,7 @@ object Form2: TForm2
   object laDbName: TLabel
     Left = 8
     Height = 15
-    Top = 36
+    Top = 92
     Width = 51
     Caption = '&Database:'
     FocusControl = edDatabase
@@ -52,7 +53,7 @@ object Form2: TForm2
   object laHost: TLabel
     Left = 8
     Height = 15
-    Top = 122
+    Top = 34
     Width = 78
     Caption = '&Host Name/IP:'
     FocusControl = edHost
@@ -62,7 +63,7 @@ object Form2: TForm2
   object laPort: TLabel
     Left = 8
     Height = 15
-    Top = 148
+    Top = 60
     Width = 60
     Caption = 'Server &Port:'
     FocusControl = edPort
@@ -73,7 +74,7 @@ object Form2: TForm2
     Left = 87
     Height = 23
     Hint = 'Use login name or LDAP username like Some.User@Domain'
-    Top = 63
+    Top = 119
     Width = 233
     ParentFont = False
     ParentShowHint = False
@@ -83,7 +84,7 @@ object Form2: TForm2
   object edDatabase: TEdit
     Left = 87
     Height = 23
-    Top = 32
+    Top = 88
     Width = 233
     ParentFont = False
     TabOrder = 2
@@ -91,7 +92,7 @@ object Form2: TForm2
   object edHost: TEdit
     Left = 87
     Height = 23
-    Top = 120
+    Top = 32
     Width = 233
     ParentFont = False
     TabOrder = 5
@@ -99,16 +100,17 @@ object Form2: TForm2
   object edPort: TEdit
     Left = 87
     Height = 23
-    Top = 148
+    Top = 60
     Width = 233
     ParentFont = False
     TabOrder = 6
   end
   object btnOk: TButton
-    Left = 160
+    Left = 173
     Height = 25
-    Top = 197
+    Top = 199
     Width = 75
+    Anchors = [akRight, akBottom]
     Caption = 'Connect'
     Default = True
     Font.Color = clWindowText
@@ -120,10 +122,11 @@ object Form2: TForm2
     OnClick = Connect
   end
   object btnCancel: TButton
-    Left = 245
+    Left = 258
     Height = 25
-    Top = 197
+    Top = 199
     Width = 75
+    Anchors = [akRight, akBottom]
     Cancel = True
     Caption = 'Cancel'
     Font.Color = clWindowText
@@ -138,7 +141,7 @@ object Form2: TForm2
     Left = 0
     Height = 25
     Top = 0
-    Width = 332
+    Width = 342
     Align = alTop
     Alignment = taLeftJustify
     BevelOuter = bvNone
@@ -160,7 +163,7 @@ object Form2: TForm2
     Left = 87
     Height = 23
     Hint = 'Leave blank if using LDAP username.'
-    Top = 91
+    Top = 147
     Width = 233
     ButtonCursor = crNone
     ButtonWidth = 0

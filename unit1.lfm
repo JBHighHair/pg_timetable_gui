@@ -9,7 +9,7 @@ object Form1: TForm1
   ClientWidth = 1251
   Menu = MainMenu
   Position = poDefaultSizeOnly
-  LCLVersion = '4.4.0.0'
+  LCLVersion = '4.6.0.0'
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   object StatusBar1: TStatusBar
@@ -30,6 +30,7 @@ object Form1: TForm1
     Images = ImageList1
     TabIndex = 0
     TabOrder = 3
+    OnChange = PageControl1Change
     object TabSheet1: TTabSheet
       Caption = 'Jobs'
       ClientHeight = 575

@@ -59,10 +59,16 @@ var
 begin
    {Set the fields with the contents}
    DatabaseName := edDatabase.Text;
-   UserName := edUserID.Text;
-   Password := edPasswd.Text;
+   UserName := Trim(edUserID.Text);
+   Password := Trim(edPasswd.Text);
    HostName := edHost.Text;
    Port := edPort.Text;
+
+   {If username and password are blank then use LDAP like Some.User@DOMAIN}
+   if Length(Trim(UserName)) + Length(Trim(Password)) = 0 then
+   begin
+        UserName := GetEnvironmentVariable('USERNAME') + '@' + GetEnvironmentVariable('USERDOMAIN');
+   end;
 
    {Disable connections}
    Form1.PQConnection1.Close;
@@ -76,8 +82,8 @@ begin
    Form1.PQConnection1.HostName := HostName;
    Form1.PQConnection1.Params.Add(Format('port=%d', [StrToIntDef(Port, 5432)]));
    Form1.PQConnection1.DatabaseName := DatabaseName;
-   Form1.PQConnection1.UserName := UserName; {Blank is Trusted authentication.}
-   Form1.PQConnection1.Password := Password; {Blank is Trusted authentication.}
+   Form1.PQConnection1.UserName := UserName;
+   Form1.PQConnection1.Password := Password;
    if (Form1.PQConnection1.Connected) then Form1.PQConnection1.Connected := False;
    if (not Form1.PQConnection1.Connected) then
    begin
@@ -101,8 +107,8 @@ begin
    {Save the connection details}
    INI := TIniFile.Create(CurrPath + 'pg_timetable_gui.ini');
    INI.WriteString('pg_timetable_gui', 'DatabaseName', DatabaseName);
-   INI.WriteString('pg_timetable_gui', 'UserName', UserName);
-   INI.WriteString('pg_timetable_gui', 'Password', Form1.encrypt(key+UserName, Password));
+   INI.WriteString('pg_timetable_gui', 'UserName', Trim(edUserID.Text));
+   INI.WriteString('pg_timetable_gui', 'Password', Form1.encrypt(key+UserName, Trim(edPasswd.Text)));
    INI.WriteString('pg_timetable_gui', 'HostName', HostName);
    INI.WriteString('pg_timetable_gui', 'Port', Port);
    INI.Free;

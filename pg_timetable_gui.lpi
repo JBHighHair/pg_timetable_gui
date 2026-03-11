@@ -21,8 +21,8 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="1"/>
-      <RevisionNr Value="1"/>
-      <BuildNr Value="40"/>
+      <RevisionNr Value="2"/>
+      <BuildNr Value="46"/>
       <Language Value="0809"/>
       <StringTable Comments="Written by John Buoro" CompanyName="Harvey Norman Holdings Limited" FileDescription="GUI frontend for pg_timetable" LegalCopyright="All Rights Reserved" OriginalFilename="pg_timetable_gui.exe" ProductName="pg_timetable_gui"/>
     </VersionInfo>
